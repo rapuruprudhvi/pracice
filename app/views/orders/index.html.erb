@@ -1,0 +1,24 @@
+<h2>Order Details</h2>
+<% if @orders.any? %>
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        <p>Date Submitted: <%= order.date_submitted %></p>
+        <p>Status:- <%= order.status %></p>
+        <p>Subtotal:- <%= order.subtotal %></p>
+        <p>Shipping:- <%= order.shipping %></p>
+        <p>tax:-<%= order.tax %></p>
+        
+        <ul>
+          <li><%= link_to "Edit", edit_order_path(order)  %></li>
+          <li><%= link_to "Destroy", order_path(order), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No orders available.</p>
+<% end %>

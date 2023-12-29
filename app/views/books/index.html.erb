@@ -1,0 +1,20 @@
+<h1>Books</h1>
+
+<ol>
+  <% @books.each do |book| %>
+    <li>
+      <%= link_to book.title, book %>
+    </li>
+  <% end %>
+</ol>
+<%= link_to "New Book", new_book_path %><br>
+<%= link_to "Sort by Price", books_path(sort: 'price') %><br>
+<%= link_to "Sort by year", books_path(sort: 'year') %>
+<h2>10 years old Books</h2>
+  <ul>
+ 
+
+<%= link_to "Sort by Title", books_path(sort: 'title') %><br/>
+<%= link_to "Sort by Year", books_path(sort: 'year') %><br/>
+<%= link_to "Sort by Price", books_path(sort: 'price') %><br/>
+

@@ -1,0 +1,14 @@
+<h1><%= @author.first_name %></h1>
+
+<p><%= @author.last_name %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_author_path(@author) %></li>
+  <li><%= link_to "Destroy", author_path(@author), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %></li>
+
+</ul>
+
+

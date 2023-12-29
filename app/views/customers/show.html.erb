@@ -1,0 +1,12 @@
+<h1><%= @customer.first_name %></h1>
+
+<p><%= @customer.last_name %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_customer_path(@customer) %></li>
+  <li><%= link_to "Destroy", author_path(@customer), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %></li>
+
+</ul>
