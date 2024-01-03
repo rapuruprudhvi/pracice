@@ -1,0 +1,58 @@
+<h1>Bookstore</h1>
+
+<p>Sign in as:</p>
+<% if customer_signed_in? %>
+  <%= current_customer.first_name %>
+  <%= link_to "Sign Out", destroy_customer_session_path, method: :delete, data: { turbo_method: :delete } %>
+<% else %>
+  <%= link_to "Author", new_author_session_path %> |
+  <%= link_to "Customer", new_customer_session_path %>
+<% end %>
+
+<% if @current_author %>
+  <p>Welcome, <%= @current_author.first_name %>!</p>
+  <h2>Your Books</h2>
+  <ul>
+    <% @current_author.books.each do |book| %>
+      <li>BookName: <%= link_to book.title, book_path(book) %><br>
+      Author: <%= link_to book.author.first_name, author_path(book.author) %></li>
+    <% end %>
+    <%= link_to "New Book", new_book_path %>
+  </ul>
+
+<% else %>
+  <p>No author logged in.</p>
+<% end %>
+
+
+<% if current_customer %>
+  <p>Welcome, <%= current_customer.first_name   %>!</p>
+  <h2>Customer Details</h2>
+  Books: <%= link_to "View Books", books_path %><br>
+  <ul>
+    <% current_customer.reviews.each do |review| %>
+      <li>
+        Book: <%= link_to review.book.title, book_path(review.book) %><br>
+        Customer: <%= link_to review.customer.first_name, customer_path(review.customer) %><br>
+      </li>
+    <% end %>
+  </ul>
+  <h2>Orders</h2>
+  <ul>
+    <% if current_customer.orders.any? %>
+      <% current_customer.orders.each do |order| %>
+        <li>
+          Order ID: <%= order.id %><br>
+          Date Submitted: <%= order.date_submitted %><br>
+          Status: <%= order.status %><br>
+        </li>
+      <% end %>
+    <% else %>
+      <p>No orders available for this customer.</p>
+    <% end %>
+    <%= link_to "New Order", new_order_path %>
+  </ul>
+  <% if current_customer %>
+    <%= link_to "Sign Out", destroy_customer_session_path, method: :delete, data: { turbo_method: :delete } %>
+  <% end %>
+<% end %>

@@ -1,38 +1,13 @@
-<h1>Author List</h1>
+<h1>Authors</h1>
+
 <ul>
   <% @authors.each do |author| %>
     <li>
-      <h3>first_name: <%= author.first_name %></h3>
-      <h4>last_name: <%= author.last_name %></h4>
-      <p>title: <%= author.title %></p>
+     first_name:- <%= link_to author.first_name,author %>
     </li>
   <% end %>
-  <li>
-    <%= link_to "New Author", new_author_path %>
-  </li>
-  <li>
-  <%= link_to "Book Details", books_path %>
-  </li>
-  <li>
-    <%= link_to "Customer", customers_url %>
-  </li>
-  <li>
-    <%= link_to "Supplier", suppliers_url %>
-  </li>
-  <li>
-    <%= link_to "Sort by Title", books_path(sort: 'title') %><br/>
-    <%= link_to "Sort by Year", books_path(sort: 'year') %><br/>
-    <%= link_to "Sort by Price", books_path(sort: 'price') %><br/>
-    
-    <%= link_to "Create Order", new_order_path %>
-  </li>
 </ul>
-
-
-
-
-
-
+<%= link_to "New Author", new_author_path %><br>
 
 
 

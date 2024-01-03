@@ -1,6 +1,9 @@
-<h1><%= @author.first_name %></h1>
+<h1>First_name:<%= @author.first_name %></h1>
 
-<p><%= @author.last_name %></p>
+<div style="margin-top: 20px;">
+  <h3>Last Name: <%= @author.last_name %></h3>
+  <h3>Title: <%= @author.title %></h3>
+</div>
 
 <ul>
   <li><%= link_to "Edit", edit_author_path(@author) %></li>
